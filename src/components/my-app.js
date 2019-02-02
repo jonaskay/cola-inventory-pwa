@@ -205,9 +205,10 @@ class MyApp extends connect(store)(LitElement) {
 
         <!-- This gets hidden on a small screen-->
         <nav class="toolbar-list">
-          <a ?selected="${this._page === 'view1'}" href="/view1">View One</a>
-          <a ?selected="${this._page === 'view2'}" href="/view2">View Two</a>
-          <a ?selected="${this._page === 'view3'}" href="/view3">View Three</a>
+          <a ?selected="${this._page === 'orders'}" href="/orders">Orders</a>
+          <a ?selected="${this._page === 'deliveries'}" href="/deliveries"
+            >Deliveries</a
+          >
         </nav>
       </app-header>
 
@@ -217,26 +218,28 @@ class MyApp extends connect(store)(LitElement) {
         @opened-changed="${this._drawerOpenedChanged}"
       >
         <nav class="drawer-list">
-          <a ?selected="${this._page === 'view1'}" href="/view1">View One</a>
-          <a ?selected="${this._page === 'view2'}" href="/view2">View Two</a>
-          <a ?selected="${this._page === 'view3'}" href="/view3">View Three</a>
+          <a ?selected="${this._page === 'orders'}" href="/orders">Orders</a>
+          <a ?selected="${this._page === 'deliveries'}" href="/deliveries"
+            >Deliveries</a
+          >
         </nav>
       </app-drawer>
 
       <!-- Main content -->
       <main role="main" class="main-content">
-        <my-view1 class="page" ?active="${this._page === 'view1'}"></my-view1>
-        <my-view2 class="page" ?active="${this._page === 'view2'}"></my-view2>
-        <my-view3 class="page" ?active="${this._page === 'view3'}"></my-view3>
+        <orders-page
+          class="page"
+          ?active="${this._page === 'orders'}"
+        ></orders-page>
+        <deliveries-page
+          class="page"
+          ?active="${this._page === 'deliveries'}"
+        ></deliveries-page>
         <my-view404
           class="page"
           ?active="${this._page === 'view404'}"
         ></my-view404>
       </main>
-
-      <footer>
-        <p>Made with &hearts; by the Polymer team.</p>
-      </footer>
 
       <snack-bar ?active="${this._snackbarOpened}">
         You are now ${this._offline ? 'offline' : 'online'}.
