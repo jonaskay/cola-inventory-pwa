@@ -9,7 +9,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 */
 
 import { html } from 'lit-element';
+
 import { PageViewElement } from './page-view-element.js';
+import './order-element.js';
 
 // These are the shared styles needed by this element.
 import { SharedStyles } from './shared-styles.js';
@@ -23,6 +25,7 @@ class OrdersPage extends PageViewElement {
     return html`
       <section>
         <h2>Latest order</h2>
+        <order-element></order-element>
       </section>
     `;
   }
