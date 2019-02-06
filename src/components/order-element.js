@@ -24,7 +24,7 @@ class OrderElement extends LitElement {
         </h3>
         <ul>
           <li>Created: ${this._timestampToDate(this.created_at)}</li>
-          ${this.delivered_at && this._renderDeliveredAt(this.delivered_at)}
+          ${this.delivered_at ? this._renderDeliveredAt(this.delivered_at) : ''}
         </ul>
       </div>
     `;
