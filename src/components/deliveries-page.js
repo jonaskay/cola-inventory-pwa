@@ -16,6 +16,11 @@ import { SharedStyles } from './shared-styles.js';
 
 import './deliver-element.js';
 
+import { store } from '../store.js';
+import inventory from '../reducers/inventory.js';
+import { sendDelivery } from '../actions/inventory.js';
+store.addReducers({ inventory });
+
 class DeliveriesPage extends PageViewElement {
   static get styles() {
     return [SharedStyles];
@@ -25,9 +30,15 @@ class DeliveriesPage extends PageViewElement {
     return html`
       <section>
         <h2>Make a delivery</h2>
-        <p><deliver-element></deliver-element></p>
+        <p>
+          <deliver-element @click="${this._handleDelivery}"></deliver-element>
+        </p>
       </section>
     `;
+  }
+
+  _handleDelivery() {
+    store.dispatch(sendDelivery());
   }
 }
 
