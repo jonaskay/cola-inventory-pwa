@@ -18,6 +18,9 @@ import { updateMetadata } from 'pwa-helpers/metadata.js';
 
 // This element is connected to the Redux store.
 import { store } from '../store.js';
+import inventory from '../reducers/inventory.js';
+import { loadOrder } from '../actions/inventory.js';
+store.addReducers({ inventory });
 
 // These are the actions needed by this element.
 import { navigate, updateOffline, updateDrawerState } from '../actions/app.js';
@@ -262,6 +265,7 @@ class MyApp extends connect(store)(LitElement) {
     installMediaQueryWatcher(`(min-width: 460px)`, () =>
       store.dispatch(updateDrawerState(false))
     );
+    store.dispatch(loadOrder());
   }
 
   updated(changedProps) {

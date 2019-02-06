@@ -9,6 +9,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 */
 
 import { html } from 'lit-element';
+import { connect } from 'pwa-helpers/connect-mixin.js';
+
+import { store } from '../store.js';
+import inventory from '../reducers/inventory.js';
+store.addReducers({ inventory });
 
 import { PageViewElement } from './page-view-element.js';
 import './order-element.js';
@@ -16,7 +21,13 @@ import './order-element.js';
 // These are the shared styles needed by this element.
 import { SharedStyles } from './shared-styles.js';
 
-class OrdersPage extends PageViewElement {
+class OrdersPage extends connect(store)(PageViewElement) {
+  static get properties() {
+    return {
+      _order: { type: Object },
+    };
+  }
+
   static get styles() {
     return [SharedStyles];
   }
@@ -25,9 +36,22 @@ class OrdersPage extends PageViewElement {
     return html`
       <section>
         <h2>Latest order</h2>
-        <order-element></order-element>
+        <p>
+          ${this._order &&
+            html`
+              <order-element
+                id=${this._order.data.id}
+                delivered_at=${this._order.data.attributes.delivered_at}
+                created_at=${this._order.data.attributes.created_at}
+              ></order-element>
+            `}
+        </p>
       </section>
     `;
+  }
+
+  stateChanged(state) {
+    this._order = state.inventory.order;
   }
 }
 
