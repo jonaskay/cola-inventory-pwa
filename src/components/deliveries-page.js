@@ -14,6 +14,8 @@ import { PageViewElement } from './page-view-element.js';
 // These are the shared styles needed by this element.
 import { SharedStyles } from './shared-styles.js';
 
+import './deliver-element.js';
+
 class DeliveriesPage extends PageViewElement {
   static get styles() {
     return [SharedStyles];
@@ -23,6 +25,7 @@ class DeliveriesPage extends PageViewElement {
     return html`
       <section>
         <h2>Make a delivery</h2>
+        <p><deliver-element></deliver-element></p>
       </section>
     `;
   }
