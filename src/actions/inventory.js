@@ -38,6 +38,8 @@ export const sendOrder = () => async dispatch => {
 };
 
 export const sendDelivery = () => async dispatch => {
+  dispatch({ type: RELOAD });
+
   const resp = await fetch(
     'https://europe-west1-cola-inventory.cloudfunctions.net/deliver'
   );
