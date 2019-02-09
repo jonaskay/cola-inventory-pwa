@@ -19,6 +19,19 @@ export const loadOrder = () => async dispatch => {
   }
 };
 
+export const sendOrder = () => async dispatch => {
+  const resp = await fetch(
+    'https://europe-west1-cola-inventory.cloudfunctions.net/order',
+    { method: 'POST' }
+  );
+  const data = await resp.json();
+  if (resp.status == 200) {
+    dispatch({ type: FETCH_ORDER, order: data });
+  } else {
+    dispatch({ type: FETCH_FAILURE, errors: data });
+  }
+};
+
 export const sendDelivery = () => async dispatch => {
   const resp = await fetch(
     'https://europe-west1-cola-inventory.cloudfunctions.net/deliver'

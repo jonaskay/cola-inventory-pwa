@@ -13,6 +13,7 @@ import { connect } from 'pwa-helpers/connect-mixin.js';
 
 import { store } from '../store.js';
 import inventory from '../reducers/inventory.js';
+import { sendOrder } from '../actions/inventory.js';
 store.addReducers({ inventory });
 
 import { PageViewElement } from './page-view-element.js';
@@ -37,7 +38,7 @@ class OrdersPage extends connect(store)(PageViewElement) {
     return html`
       <section>
         <h2>Place an order</h2>
-        <p><order-button></order-button></p>
+        <p><order-button @click="${this._handleOrder}"></order-button></p>
         <p>
           ${this._order &&
             html`
@@ -50,6 +51,10 @@ class OrdersPage extends connect(store)(PageViewElement) {
         </p>
       </section>
     `;
+  }
+
+  _handleOrder() {
+    store.dispatch(sendOrder());
   }
 
   stateChanged(state) {
