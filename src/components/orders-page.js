@@ -17,6 +17,7 @@ store.addReducers({ inventory });
 
 import { PageViewElement } from './page-view-element.js';
 import './order-element.js';
+import './order-button.js';
 
 // These are the shared styles needed by this element.
 import { SharedStyles } from './shared-styles.js';
@@ -35,7 +36,8 @@ class OrdersPage extends connect(store)(PageViewElement) {
   render() {
     return html`
       <section>
-        <h2>Latest order</h2>
+        <h2>Place an order</h2>
+        <p><order-button></order-button></p>
         <p>
           ${this._order &&
             html`
