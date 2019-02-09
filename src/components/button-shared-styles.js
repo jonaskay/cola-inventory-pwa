@@ -15,11 +15,21 @@ export const ButtonSharedStyles = css`
     font-size: inherit;
     vertical-align: middle;
     background: transparent;
-    border: none;
+    border: 2px solid var(--app-dark-text-color);
+    border-radius: 3px;
     cursor: pointer;
+    padding: 8px 16px;
   }
 
   button:hover svg {
+    border-color: var(--app-primary-color);
+    color: var(--app-primary-color);
     fill: var(--app-primary-color);
+  }
+
+  button:disabled {
+    border-color: var(--app-disabled-color);
+    color: var(--app-disabled-color);
+    cursor: not-allowed;
   }
 `;

@@ -30,7 +30,7 @@ class DeliveriesPage extends PageViewElement {
     return html`
       <section>
         <h2>Make a delivery</h2>
-        <p>
+        <p class="button-wrapper">
           <button-element
             @click="${this._handleDelivery}"
             title="Deliver cola"

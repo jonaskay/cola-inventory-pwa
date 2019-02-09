@@ -54,7 +54,7 @@ class OrdersPage extends connect(store)(PageViewElement) {
     return html`
       <section>
         <h2>Place an order</h2>
-        <p>
+        <p class="button-wrapper">
           <button-element
             @click="${this._handleOrder}"
             ?disabled=${this._loadingOrder || this._orderWaiting()}

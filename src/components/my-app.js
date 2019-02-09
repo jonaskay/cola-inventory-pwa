@@ -54,6 +54,7 @@ class MyApp extends connect(store)(LitElement) {
 
           --app-primary-color: #e91e63;
           --app-secondary-color: #293237;
+          --app-disabled-color: rgba(0, 0, 0, 0.38);
           --app-dark-text-color: var(--app-secondary-color);
           --app-light-text-color: white;
           --app-section-even-color: #f7f7f7;

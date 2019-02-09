@@ -43,16 +43,8 @@ export const SharedStyles = css`
     }
   }
 
-  .circle {
-    display: block;
-    width: 64px;
-    height: 64px;
-    margin: 0 auto;
+  .button-wrapper {
+    margin-bottom: 3rem;
     text-align: center;
-    border-radius: 50%;
-    background: var(--app-primary-color);
-    color: var(--app-light-text-color);
-    font-size: 30px;
-    line-height: 64px;
   }
 `;
