@@ -9,12 +9,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 */
 
 import { html } from 'lit-element';
-import { PageViewElement } from './page-view-element.js';
 
 // These are the shared styles needed by this element.
 import { SharedStyles } from './shared-styles.js';
 
-import './deliver-element.js';
+import { PageViewElement } from './page-view-element.js';
+import './deliver-button.js';
 
 import { store } from '../store.js';
 import inventory from '../reducers/inventory.js';
@@ -31,7 +31,7 @@ class DeliveriesPage extends PageViewElement {
       <section>
         <h2>Make a delivery</h2>
         <p>
-          <deliver-element @click="${this._handleDelivery}"></deliver-element>
+          <deliver-button @click="${this._handleDelivery}"></deliver-button>
         </p>
       </section>
     `;
