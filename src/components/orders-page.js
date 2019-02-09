@@ -26,12 +26,28 @@ import { SharedStyles } from './shared-styles.js';
 class OrdersPage extends connect(store)(PageViewElement) {
   static get properties() {
     return {
+      _loadingOrder: { type: Boolean },
       _order: { type: Object },
+      _errors: { type: Array },
     };
   }
 
   static get styles() {
     return [SharedStyles];
+  }
+
+  _renderErrors() {
+    return html`
+      <p>Error occurred:</p>
+      <ul>
+        ${this._errors.map(
+          error =>
+            html`
+              <li>${error.detail || error.title}</li>
+            `
+        )}
+      </ul>
+    `;
   }
 
   render() {
@@ -41,9 +57,11 @@ class OrdersPage extends connect(store)(PageViewElement) {
         <p>
           <button-element
             @click="${this._handleOrder}"
+            ?disabled=${this._loadingOrder || this._orderWaiting()}
             title="Order cola"
           ></button-element>
         </p>
+        ${this._errors.length > 0 ? this._renderErrors() : ''}
         <p>
           ${this._order &&
             html`
@@ -62,8 +80,16 @@ class OrdersPage extends connect(store)(PageViewElement) {
     store.dispatch(sendOrder());
   }
 
+  _orderWaiting() {
+    return this._order && this._order.data.attributes.delivered_at
+      ? false
+      : true;
+  }
+
   stateChanged(state) {
+    this._loadingOrder = state.inventory.loading;
     this._order = state.inventory.order;
+    this._errors = state.inventory.errors;
   }
 }
 

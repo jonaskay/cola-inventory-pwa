@@ -7,6 +7,7 @@ class ButtonElement extends LitElement {
   static get properties() {
     return {
       title: { type: String },
+      disabled: { type: Boolean },
     };
   }
 
@@ -31,7 +32,7 @@ class ButtonElement extends LitElement {
 
   render() {
     return html`
-      <button>${this.title}</button>
+      <button ?disabled=${this.disabled}>${this.title}</button>
     `;
   }
 }
