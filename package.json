@@ -4,7 +4,9 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "polymer serve"
+    "build": "polymer build",
+    "start": "polymer serve",
+    "serve": "polymer serve --port 5000 build/es5-bundled"
   },
   "devDependencies": {
     "polymer-cli": "^1.9.5"
