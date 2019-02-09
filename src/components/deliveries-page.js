@@ -14,7 +14,7 @@ import { html } from 'lit-element';
 import { SharedStyles } from './shared-styles.js';
 
 import { PageViewElement } from './page-view-element.js';
-import './deliver-button.js';
+import './button-element.js';
 
 import { store } from '../store.js';
 import inventory from '../reducers/inventory.js';
@@ -31,7 +31,10 @@ class DeliveriesPage extends PageViewElement {
       <section>
         <h2>Make a delivery</h2>
         <p>
-          <deliver-button @click="${this._handleDelivery}"></deliver-button>
+          <button-element
+            @click="${this._handleDelivery}"
+            title="Deliver cola"
+          ></button-element>
         </p>
       </section>
     `;

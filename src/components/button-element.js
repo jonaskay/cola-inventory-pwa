@@ -3,7 +3,13 @@ import { LitElement, html, css } from 'lit-element';
 import { SharedStyles } from './shared-styles.js';
 import { ButtonSharedStyles } from './button-shared-styles.js';
 
-class DeliverButton extends LitElement {
+class ButtonElement extends LitElement {
+  static get properties() {
+    return {
+      title: { type: String },
+    };
+  }
+
   static get styles() {
     return [
       SharedStyles,
@@ -25,9 +31,9 @@ class DeliverButton extends LitElement {
 
   render() {
     return html`
-      <button>Deliver cola</button>
+      <button>${this.title}</button>
     `;
   }
 }
 
-customElements.define('deliver-button', DeliverButton);
+customElements.define('button-element', ButtonElement);
