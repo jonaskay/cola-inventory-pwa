@@ -1,5 +1,6 @@
 # Cola Inventory PWA
 [![Build Status](https://travis-ci.com/jonaskay/cola-inventory-pwa.svg?branch=master)](https://travis-ci.com/jonaskay/cola-inventory-pwa)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/6830f67f-047c-4ae3-9d61-05228c31b8ba/deploy-status)](https://app.netlify.com/sites/cola-inventory/deploys)
 
 Cola Inventory PWA provides a simple inventory management system for your office soda. Users can place an order or mark an order delivered at the click of a button.
 
